@@ -1,0 +1,9 @@
+# Arquivos HEIC originais (pesados, desnecessários no deploy)
+fotos/*.heic
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Config local de dev
+.claude/

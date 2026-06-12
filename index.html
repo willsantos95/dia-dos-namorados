@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Dia dos Namorados 💕</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js"></script>
+</head>
+<body>
+
+<!-- ── PARTÍCULAS ─────────────────────────────────────────── -->
+<div id="particulas"></div>
+
+<!-- ── TELA DE ABERTURA ───────────────────────────────────── -->
+<div id="tela-abertura">
+  <div class="coracoes-abertura">💝</div>
+  <h1 id="abertura-titulo">Você recebeu um presente especial</h1>
+  <button class="btn-abrir" id="btn-abrir">Abrir presente ❤️</button>
+</div>
+
+<!-- ── CAPA ───────────────────────────────────────────────── -->
+<section id="capa">
+  <h1 class="titulo-capa" id="capa-nomes"></h1>
+  <p class="subtitulo-capa" id="capa-mensagem"></p>
+  <p class="mensagem-capa">Juntos há:</p>
+
+  <div class="contador-wrapper">
+    <div class="contador-item">
+      <span class="contador-num" id="c-anos">0</span>
+      <span class="contador-label">anos</span>
+    </div>
+    <div class="contador-item">
+      <span class="contador-num" id="c-meses">0</span>
+      <span class="contador-label">meses</span>
+    </div>
+    <div class="contador-item">
+      <span class="contador-num" id="c-dias">0</span>
+      <span class="contador-label">dias</span>
+    </div>
+    <div class="contador-item">
+      <span class="contador-num" id="c-horas">0</span>
+      <span class="contador-label">horas</span>
+    </div>
+    <div class="contador-item">
+      <span class="contador-num" id="c-min">0</span>
+      <span class="contador-label">min</span>
+    </div>
+    <div class="contador-item">
+      <span class="contador-num" id="c-seg">0</span>
+      <span class="contador-label">seg</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>↓</span>
+    role para baixo
+  </div>
+</section>
+
+<!-- ── SLIDESHOW DE FOTOS ─────────────────────────────────── -->
+<section id="slideshow">
+  <div class="slideshow-container">
+    <div id="slides"></div>
+    <div class="slide-controles">
+      <button class="btn-slide" id="btn-anterior" title="Anterior">‹</button>
+      <div class="indicadores" id="indicadores"></div>
+      <button class="btn-slide" id="btn-proximo" title="Próxima">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── MENSAGENS ──────────────────────────────────────────── -->
+<section class="secao">
+  <h2 class="secao-titulo">O que sinto por você...</h2>
+  <div class="divisor"><span>❤️</span></div>
+  <div id="mensagens-container"></div>
+</section>
+
+<!-- ── FINAL ──────────────────────────────────────────────── -->
+<section id="final">
+  <div class="grande-coracao">❤️</div>
+  <h2 id="final-titulo">Te amo muito!</h2>
+  <p id="final-texto">
+    Obrigado por cada momento, cada sorriso e cada abraço.<br>
+    Você é a melhor coisa que aconteceu na minha vida.<br><br>
+    <strong>Feliz Dia dos Namorados, meu amor.</strong>
+  </p>
+</section>
+
+<!-- ── PLAYER DE MÚSICA ───────────────────────────────────── -->
+<div id="player">
+  <span class="player-icone-musica pausado" id="icone-musica">♪</span>
+
+  <div class="player-info">
+    <div class="player-titulo"  id="player-titulo">Carregando...</div>
+    <div class="player-artista" id="player-artista"></div>
+  </div>
+
+  <div class="player-progress">
+    <div class="progress-bar-wrapper" id="progress-bar-wrapper">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="player-tempos">
+      <span id="tempo-atual">0:00</span>
+      <span id="tempo-total">0:00</span>
+    </div>
+  </div>
+
+  <div class="player-controles">
+    <button class="btn-player" id="btn-anterior-p" title="Anterior">⏮</button>
+    <button class="btn-player principal" id="btn-play" title="Play/Pause">▶</button>
+    <button class="btn-player" id="btn-proximo-p" title="Próxima">⏭</button>
+  </div>
+</div>
+
+<!-- ── SCRIPTS ────────────────────────────────────────────── -->
+<script>
+  // Preenche textos dinamicamente a partir do CONFIG
+  document.getElementById('capa-nomes').textContent   = CONFIG.nome1 + ' & ' + CONFIG.nome2;
+  document.getElementById('capa-mensagem').textContent = CONFIG.mensagemCapa;
+  document.getElementById('abertura-titulo').textContent =
+    CONFIG.nome2 + ', você recebeu um presente especial 💝';
+</script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

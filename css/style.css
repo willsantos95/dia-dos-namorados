@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cor-primaria: #e91e8c;
+  --cor-secundaria: #ff6b9d;
+  --cor-fundo: #0d0d1a;
+  --cor-texto: #fff5f8;
+  --cor-card: rgba(255,255,255,0.05);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── ABERTURA ──────────────────────────────────────────── */
+#tela-abertura {
+  position: fixed; inset: 0; z-index: 1000;
+  background: var(--cor-fundo);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 2rem;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#tela-abertura.oculto { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.coracoes-abertura {
+  font-size: 4rem;
+  animation: pulsar 1.5s ease-in-out infinite;
+}
+@keyframes pulsar {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+#tela-abertura h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  text-align: center;
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1.3;
+}
+
+.btn-abrir {
+  padding: 1rem 2.8rem;
+  border: 2px solid var(--cor-primaria);
+  background: transparent;
+  color: var(--cor-texto);
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-abrir:hover {
+  background: var(--cor-primaria);
+  box-shadow: 0 0 30px rgba(233,30,140,0.5);
+  transform: scale(1.05);
+}
+
+/* ── PARTÍCULAS / CORAÇÕES FLUTUANTES ──────────────────── */
+#particulas {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.particula {
+  position: absolute; bottom: -40px;
+  font-size: 1.2rem; opacity: 0;
+  animation: subir linear infinite;
+}
+@keyframes subir {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+  100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+/* ── SEÇÃO CAPA ────────────────────────────────────────── */
+#capa {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative; z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(233,30,140,0.12) 0%, transparent 70%);
+}
+
+.titulo-capa {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  line-height: 1.1;
+  background: linear-gradient(135deg, #fff 30%, var(--cor-secundaria));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+.subtitulo-capa {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--cor-secundaria);
+  margin-bottom: 2rem;
+}
+.mensagem-capa {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  margin-bottom: 3rem;
+}
+
+.contador-wrapper { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+.contador-item {
+  display: flex; flex-direction: column; align-items: center;
+  background: var(--cor-card);
+  border: 1px solid rgba(233,30,140,0.2);
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  min-width: 90px;
+  backdrop-filter: blur(6px);
+}
+.contador-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--cor-primaria);
+  line-height: 1;
+}
+.contador-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.scroll-hint {
+  margin-top: 4rem;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  opacity: 0.5; animation: bounce 2s ease-in-out infinite;
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+.scroll-hint span { font-size: 1.4rem; }
+
+/* ── SEÇÕES GERAIS ─────────────────────────────────────── */
+.secao {
+  position: relative; z-index: 1;
+  padding: 6rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.secao-titulo {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--cor-secundaria);
+}
+
+/* ── SLIDESHOW DE FOTOS ────────────────────────────────── */
+#slideshow {
+  position: relative; z-index: 1;
+  padding: 4rem 0;
+  background: rgba(0,0,0,0.2);
+}
+.slideshow-container {
+  position: relative;
+  max-width: 700px; margin: 0 auto;
+  text-align: center; padding: 0 1rem;
+}
+.slide {
+  display: none;
+  animation: fadeSlide 0.8s ease;
+}
+.slide.ativo { display: block; }
+@keyframes fadeSlide {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.slide-img-wrapper {
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(233,30,140,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(233,30,140,0.1);
+}
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 600px) {
+  .slide-img-wrapper { width: 90%; }
+}
+.slide-legenda {
+  margin-top: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--cor-secundaria);
+  opacity: 0.9;
+}
+
+.slide-controles {
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+  margin-top: 2rem;
+}
+.btn-slide {
+  background: var(--cor-card);
+  border: 1px solid rgba(233,30,140,0.3);
+  color: var(--cor-texto);
+  width: 46px; height: 46px;
+  border-radius: 50%; cursor: pointer; font-size: 1.2rem;
+  transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+}
+.btn-slide:hover { background: var(--cor-primaria); border-color: var(--cor-primaria); transform: scale(1.1); }
+
+.indicadores { display: flex; gap: 8px; }
+.indicador {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer; transition: all 0.2s;
+}
+.indicador.ativo { background: var(--cor-primaria); transform: scale(1.3); }
+
+/* ── CARD DE MENSAGEM ──────────────────────────────────── */
+.card-mensagem {
+  background: var(--cor-card);
+  border: 1px solid rgba(233,30,140,0.15);
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  margin-bottom: 2rem;
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.card-mensagem.visivel { opacity: 1; transform: translateY(0); }
+
+.card-mensagem h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; margin-bottom: 1rem;
+  color: var(--cor-secundaria);
+}
+.card-mensagem p { line-height: 1.9; opacity: 0.85; font-size: 1.05rem; }
+
+/* ── SEÇÃO FINAL ───────────────────────────────────────── */
+#final {
+  min-height: 80vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 4rem 2rem;
+  position: relative; z-index: 1;
+}
+#final .grande-coracao {
+  font-size: 6rem;
+  animation: pulsar 1.5s ease-in-out infinite;
+  margin-bottom: 2rem;
+}
+#final h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+#final p {
+  max-width: 500px;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  opacity: 0.8;
+}
+
+/* ── PLAYER DE MÚSICA ──────────────────────────────────── */
+#player {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+  background: rgba(13,13,26,0.92);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(233,30,140,0.2);
+  padding: 0.8rem 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+}
+#player.visivel { transform: translateY(0); }
+
+.player-info { flex: 1; min-width: 0; }
+.player-titulo {
+  font-size: 0.85rem; font-weight: 400;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.player-artista { font-size: 0.72rem; opacity: 0.5; margin-top: 2px; }
+
+.player-controles { display: flex; align-items: center; gap: 0.6rem; }
+.btn-player {
+  background: none; border: none; color: var(--cor-texto);
+  font-size: 1.2rem; cursor: pointer; padding: 6px;
+  transition: color 0.2s, transform 0.2s; line-height: 1;
+}
+.btn-player:hover { color: var(--cor-primaria); transform: scale(1.15); }
+.btn-player.principal { font-size: 1.6rem; }
+
+.player-progress {
+  flex: 2; display: flex; flex-direction: column; gap: 4px;
+  min-width: 120px;
+}
+.progress-bar-wrapper {
+  height: 3px; background: rgba(255,255,255,0.15);
+  border-radius: 3px; cursor: pointer; position: relative;
+}
+.progress-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+  border-radius: 3px;
+  transition: width 0.3s linear;
+}
+.player-tempos { display: flex; justify-content: space-between; font-size: 0.65rem; opacity: 0.5; }
+
+.player-icone-musica { font-size: 1.3rem; animation: girar 4s linear infinite; }
+.player-icone-musica.pausado { animation-play-state: paused; }
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── DIVISOR ───────────────────────────────────────────── */
+.divisor {
+  display: flex; align-items: center; gap: 1.5rem;
+  max-width: 400px; margin: 0 auto 3rem;
+  opacity: 0.3;
+}
+.divisor::before, .divisor::after {
+  content: ''; flex: 1; height: 1px; background: var(--cor-primaria);
+}
+.divisor span { font-size: 1.2rem; }
+
+/* ── RESPONSIVO ────────────────────────────────────────── */
+@media (max-width: 500px) {
+  .contador-wrapper { gap: 1rem; }
+  .contador-item { min-width: 70px; padding: 0.8rem 1rem; }
+  .contador-num { font-size: 2rem; }
+  #player { padding: 0.8rem 1rem; gap: 0.6rem; }
+  .player-progress { min-width: 80px; }
+}
