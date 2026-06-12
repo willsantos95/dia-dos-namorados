@@ -45,7 +45,8 @@ const CONFIG = {
     {
       titulo: "Hoje e sempre",
       texto:
-        "Feliz Dia dos Namorados, meu amor. Que a gente continue construindo nossa história, cheia de amor, risadas e cumplicidade. Sou muito orgulhoso por tudo que a gente  vem construindo, individualmente e juntos. Obrigado por tudo! ❤️❤️❤️"
+        "Feliz Dia dos Namorados, meu amor. Que a gente continue construindo nossa história, cheia de amor, risadas e cumplicidade. Sou muito orgulhoso por tudo que a gente  vem construindo, individualmente e juntos. Obrigado por tudo! ❤️❤️❤️",
+    },
   ],
 
   // --- Cores do tema (opcional — deixe como está ou personalize) ---
